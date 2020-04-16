@@ -34,4 +34,15 @@ class TestBoard < Minitest::Test
                             --x']
     assert_equal @board.to_s, expected_board.to_s
   end
+
+  def test_position_open?
+    1.upto(9) { |n| assert @board.position_open?(n) }
+
+    board = Board['---
+                   -o-
+                   x-x']
+
+    [1, 2, 3, 4, 6, 8].each { |n| assert board.position_open?(n) }
+    [5, 7, 9].each { |n| refute board.position_open?(n) }
+  end
 end
