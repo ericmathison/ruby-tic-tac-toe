@@ -14,6 +14,11 @@ class TestBoard < Minitest::Test
     @board_ignores_strange_characters = Board["-abc123--\n -\n\n-- \n -xo"]
     @board_state_one = Board['--- -o- x-x']
     @board_state_two = Board['o-- --- --x']
+    @x_wins_once = Board['x-- x-o x-o']
+    @x_wins_twice = Board['x-- ox- o-x']
+    @x_wins_thrice = Board['oxx oox xox']
+    @o_wins_once = Board['o-- xo- xxo']
+    @o_wins_twice = Board['ooo --- xxx']
   end
 
   def test_raw
@@ -34,5 +39,17 @@ class TestBoard < Minitest::Test
     1.upto(9) { |n| assert @blank_board.position_open?(n) }
     [1, 2, 3, 4, 6, 8].each { |n| assert @board_state_one.position_open?(n) }
     [5, 7, 9].each { |n| refute @board_state_one.position_open?(n) }
+  end
+
+  def test_won?
+    assert @x_wins_once.won?(:x)
+    assert @x_wins_twice.won?(:x)
+    assert @x_wins_thrice.won?(:x)
+    refute @board_state_one.won?(:x)
+    refute @board_state_two.won?(:x)
+    assert @o_wins_once.won?(:o)
+    assert @o_wins_twice.won?(:o)
+    refute @board_state_one.won?(:o)
+    refute @board_state_two.won?(:o)
   end
 end
