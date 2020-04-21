@@ -19,7 +19,7 @@ class TestBoard < Minitest::Test
     @x_wins_twice = Board['x-- ox- o-x']
     @x_wins_thrice = Board['oxx oox xox']
     @o_wins_once = Board['o-- xo- xxo']
-    @o_wins_twice = Board['ooo --- xxx']
+    @o_wins_twice = Board['ooo x-- x-x']
   end
 
   def test_raw
