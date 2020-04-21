@@ -42,6 +42,10 @@ class Board
       .combination(3).map(&:sum).include?(15)
   end
 
+  def game_over?
+    won?(:x) || won?(:o)
+  end
+
   def current_player
     if @raw.count('x') <= @raw.count('o')
       :x
