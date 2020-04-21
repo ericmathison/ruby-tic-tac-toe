@@ -41,4 +41,12 @@ class Board
       .select.with_index { |n, i| @raw[i] == sym.to_s }
       .combination(3).map(&:sum).include?(15)
   end
+
+  def current_player
+    if @raw.count('x') <= @raw.count('o')
+      :x
+    else
+      :o
+    end
+  end
 end
