@@ -64,6 +64,12 @@ class TestBoard < Minitest::Test
     assert @o_wins_twice.game_over?
   end
 
+  def test_winner
+    assert_nil @blank_board.winner
+    assert_equal @x_wins_once.winner, :x
+    assert_equal @o_wins_once.winner, :o
+  end
+
   def test_current_player
     assert_equal @blank_board.current_player, :x
     assert_equal @board_state_two.current_player, :x

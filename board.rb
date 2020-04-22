@@ -46,6 +46,16 @@ class Board
     won?(:x) || won?(:o)
   end
 
+  def winner
+    if won?(:x)
+      :x
+    elsif won?(:o)
+      :o
+    else
+      nil
+    end
+  end
+
   def current_player
     if @raw.count('x') <= @raw.count('o')
       :x
