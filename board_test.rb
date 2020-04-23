@@ -1,4 +1,4 @@
-require_relative 'board.rb'
+require_relative 'board'
 require 'minitest/autorun'
 
 # position map:
