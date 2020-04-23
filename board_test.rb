@@ -22,6 +22,10 @@ class TestBoard < Minitest::Test
     @o_wins_twice = Board['ooo x-- x-x']
   end
 
+  def test_initialize
+    assert_equal Board.new.raw, '---------'
+  end
+
   def test_raw
     assert_equal @blank_board.raw, '---------'
     assert_equal @board_ignores_strange_characters.raw, '-------xo'

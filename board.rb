@@ -8,7 +8,7 @@
 class Board
   attr_reader :raw
 
-  def initialize(str)
+  def initialize(str='---------')
     @raw = str.gsub(/[^xo-]/,'')
   end
 
