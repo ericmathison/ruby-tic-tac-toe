@@ -5,7 +5,6 @@ require 'minitest/autorun'
 class TestUI < Minitest::Test
   def test_output_with_empty_board
     board = Board['--- --- ---']
-    ui = UI.new(board)
     empty_board = <<~BOARD
       Turn: Player X
 
@@ -15,12 +14,11 @@ class TestUI < Minitest::Test
       ───┼───┼───
          │   │  
     BOARD
-    assert_equal ui.output, empty_board
+    assert_equal UI.output(board), empty_board
   end
 
   def test_output_mid_game
     board = Board['xox xo- ---']
-    ui = UI.new(board)
     mid_game_board = <<~BOARD
       Turn: Player O
 
@@ -30,12 +28,11 @@ class TestUI < Minitest::Test
       ───┼───┼───
          │   │  
     BOARD
-    assert_equal ui.output, mid_game_board
+    assert_equal UI.output(board), mid_game_board
   end
 
   def test_winning_game
     board = Board['xo- oo- xxx']
-    ui = UI.new(board)
     mid_game_board = <<~BOARD
       Game Over
       Player X won!
@@ -46,6 +43,6 @@ class TestUI < Minitest::Test
       ───┼───┼───
        X │ X │ X
     BOARD
-    assert_equal ui.output, mid_game_board
+    assert_equal UI.output(board), mid_game_board
   end
 end
