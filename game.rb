@@ -5,6 +5,7 @@ board = Board.new
 input = nil
 
 until board.game_over? || input == 'q'
+  system 'clear'
   puts UI.output(board)
   puts
   print "Enter a move (from 1-9) or quit (q): "
@@ -12,4 +13,5 @@ until board.game_over? || input == 'q'
   board.move(board.current_player, input.to_i)
   puts
 end
+system 'clear'
 puts UI.output(board)
